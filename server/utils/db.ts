@@ -42,9 +42,4 @@ db.exec(`
   )
 `)
 
-const defaultUser = db.prepare('SELECT * FROM users WHERE username = ?').get('player')
-if (!defaultUser) {
-  db.prepare('INSERT INTO users (username, password) VALUES (?, ?)').run('player', 'dragon')
-}
-
 export default db 
