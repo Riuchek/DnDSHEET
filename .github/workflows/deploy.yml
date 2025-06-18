@@ -7,7 +7,6 @@ on:
     branches: [ main, master ]
 
 jobs:
-  # Build and test job
   build-and-test:
     runs-on: ubuntu-latest
     
@@ -27,10 +26,9 @@ jobs:
     - name: Build application
       run: yarn build
       
-    - name: Run tests (if you have them)
+    - name: Run tests (optional)
       run: yarn test || echo "No tests configured"
-      
-  # Deploy to Vercel
+
   deploy-vercel:
     needs: build-and-test
     runs-on: ubuntu-latest
@@ -47,52 +45,3 @@ jobs:
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
         vercel-args: '--prod'
-
-  # Alternative: Deploy to Railway
-  # deploy-railway:
-  #   needs: build-and-test
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-  #   
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v4
-  #     
-  #   - name: Deploy to Railway
-  #     uses: railway/deploy@v1
-  #     with:
-  #       railway_token: ${{ secrets.RAILWAY_TOKEN }}
-  #       service: ${{ secrets.RAILWAY_SERVICE }}
-
-  # Alternative: Deploy to Netlify
-  # deploy-netlify:
-  #   needs: build-and-test
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-  #   
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v4
-  #     
-  #   - name: Setup Node.js
-  #     uses: actions/setup-node@v4
-  #     with:
-  #       node-version: '18'
-  #       cache: 'yarn'
-  #       
-  #   - name: Install dependencies
-  #     run: yarn install --frozen-lockfile
-  #     
-  #   - name: Build application
-  #     run: yarn build
-  #     
-  #   - name: Deploy to Netlify
-  #     uses: nwtgck/actions-netlify@v2.0
-  #     with:
-  #       publish-dir: '.output/public'
-  #       production-branch: main
-  #       github-token: ${{ secrets.GITHUB_TOKEN }}
-  #       deploy-message: "Deploy from GitHub Actions"
-  #     env:
-  #       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-  #       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }} 
