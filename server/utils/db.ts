@@ -5,6 +5,7 @@ const db = new Database(join(process.cwd(), 'data.sqlite'))
 
 db.pragma('foreign_keys = ON')
 
+
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

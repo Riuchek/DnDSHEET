@@ -119,7 +119,7 @@ const getClassColor = (className: string) => {
 
 <template>
     <div class="min-h-screen">
-        <h1 class="text-3xl font-bold mb-6 text-center text-red-500 font-fantasy">Escolha sua classe</h1>
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-900 font-fantasy mt-4">Escolha sua classe</h1>
         <div class="classes-grid">
             <div 
             v-for="item in classes" 
