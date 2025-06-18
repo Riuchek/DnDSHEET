@@ -5,6 +5,10 @@ const props = defineProps<{
   selectedClass: ClassDetail | null
 }>()
 
+const emit = defineEmits<{
+  save: [character: any]
+}>()
+
 const character = ref({
   name: '',
   level: 1,
@@ -25,6 +29,23 @@ const character = ref({
   proficiencies: [] as string[],
   savingThrows: [] as string[],
 })
+
+const saveCharacter = () => {
+  if (!character.value.name.trim()) {
+    alert('Please enter a character name')
+    return
+  }
+
+  const characterData = {
+    ...character.value,
+    class_name: props.selectedClass?.name || '',
+    class_hit_die: props.selectedClass?.hit_die || 6,
+    proficiencies: props.selectedClass?.proficiencies.map(p => p.name) || [],
+    saving_throws: props.selectedClass?.saving_throws.map(s => s.name) || []
+  }
+
+  emit('save', characterData)
+}
 </script>
 
 <template>
@@ -53,61 +74,58 @@ const character = ref({
 
     <div class="sheet-body mt-6">
       <div class="grid grid-cols-3 gap-6">
-        <!-- Ability Scores -->
         <div class="ability-scores">
           <h3 class="text-xl font-semibold mb-4">Ability Scores</h3>
           <div class="grid grid-cols-2 gap-4">
             <div class="ability-score">
               <label>Strength</label>
-              <input v-model="character.strength" type="number" class="form-input" />
+              <input v-model="character.strength" type="number" min="1" max="20" class="form-input" />
             </div>
             <div class="ability-score">
               <label>Dexterity</label>
-              <input v-model="character.dexterity" type="number" class="form-input" />
+              <input v-model="character.dexterity" type="number" min="1" max="20" class="form-input" />
             </div>
             <div class="ability-score">
               <label>Constitution</label>
-              <input v-model="character.constitution" type="number" class="form-input" />
+              <input v-model="character.constitution" type="number" min="1" max="20" class="form-input" />
             </div>
             <div class="ability-score">
               <label>Intelligence</label>
-              <input v-model="character.intelligence" type="number" class="form-input" />
+              <input v-model="character.intelligence" type="number" min="1" max="20" class="form-input" />
             </div>
             <div class="ability-score">
               <label>Wisdom</label>
-              <input v-model="character.wisdom" type="number" class="form-input" />
+              <input v-model="character.wisdom" type="number" min="1" max="20" class="form-input" />
             </div>
             <div class="ability-score">
               <label>Charisma</label>
-              <input v-model="character.charisma" type="number" class="form-input" />
+              <input v-model="character.charisma" type="number" min="1" max="20" class="form-input" />
             </div>
           </div>
         </div>
 
-        <!-- Combat Stats -->
         <div class="combat-stats">
           <h3 class="text-xl font-semibold mb-4">Combat Stats</h3>
           <div class="grid grid-cols-2 gap-4">
             <div class="stat">
               <label>Hit Points</label>
-              <input v-model="character.hitPoints" type="number" class="form-input" />
+              <input v-model="character.hitPoints" type="number" min="1" class="form-input" />
             </div>
             <div class="stat">
               <label>Armor Class</label>
-              <input v-model="character.armorClass" type="number" class="form-input" />
+              <input v-model="character.armorClass" type="number" min="1" class="form-input" />
             </div>
             <div class="stat">
               <label>Initiative</label>
-              <input v-model="character.initiative" type="number" class="form-input" />
+              <input v-model="character.initiative" type="number" min="1" class="form-input" />
             </div>
             <div class="stat">
               <label>Speed</label>
-              <input v-model="character.speed" type="number" class="form-input" />
+              <input v-model="character.speed" type="number" min="1" class="form-input" />
             </div>
           </div>
         </div>
 
-        <!-- Class Features -->
         <div class="class-features">
           <h3 class="text-xl font-semibold mb-4">Class Features</h3>
           <div class="feature">
@@ -132,6 +150,15 @@ const character = ref({
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="mt-6 text-center">
+      <button 
+        @click="saveCharacter" 
+        class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+      >
+        Salvar personagem
+      </button>
     </div>
   </div>
 </template>

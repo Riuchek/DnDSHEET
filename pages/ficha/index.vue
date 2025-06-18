@@ -75,8 +75,27 @@ const classes = computed(() => data.value?.results)
 const selectedClass = ref<ClassDetail | null>(null)
 
 const handleClassClick = async (classIndex: string) => {
-  const { data: classData } = await useFetch<ClassDetail>(`https://www.dnd5eapi.co/api/2014/classes/${classIndex}`)
-  selectedClass.value = classData.value
+  const classData = await $fetch<ClassDetail>(`https://www.dnd5eapi.co/api/2014/classes/${classIndex}`)
+  selectedClass.value = classData
+}
+
+const handleSaveCharacter = async (characterData: any) => {
+  try {
+    const result = await $fetch('/api/characters', {
+      method: 'POST',
+      body: characterData
+    })
+
+    alert('Character saved successfully!')
+    selectedClass.value = null
+  } catch (error) {
+    console.error('Error saving character:', error)
+    alert('Failed to save character. Please try again.')
+  }
+}
+
+const viewCharacterSheets = () => {
+  navigateTo('/characters')
 }
 
 const getClassColor = (className: string) => {
@@ -112,7 +131,13 @@ const getClassColor = (className: string) => {
             <h1>{{ item.name }}</h1>
             </div>
         </div>
-        <CharacterSheet v-if="selectedClass" :selected-class="selectedClass" />
+        <CharacterSheet v-if="selectedClass" :selected-class="selectedClass" @save="handleSaveCharacter" />
+
+        <div class="mt-6 text-center space-x-4">
+          <button @click="viewCharacterSheets" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">
+            Ver fichas de personagens
+          </button>
+        </div>
     </div>
 </template>
 
