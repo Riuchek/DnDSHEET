@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "nuxt.config.ts",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": ".output/public"
@@ -11,18 +11,8 @@
   ],
   "routes": [
     {
-      "src": "/_nuxt/(.*)",
-      "dest": "/_nuxt/$1",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
       "src": "/(.*)",
-      "dest": "/",
-      "headers": {
-        "Cache-Control": "public, max-age=0, must-revalidate"
-      }
+      "dest": "/index.html"
     }
   ]
 }
