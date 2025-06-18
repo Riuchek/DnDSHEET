@@ -5,7 +5,7 @@
   "installCommand": "yarn install",
   "functions": {
     "server/api/**/*.ts": {
-      "runtime": "nodejs18.x"
+      "runtime": "@vercel/node@18"
     }
   },
   "env": {
