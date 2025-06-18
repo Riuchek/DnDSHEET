@@ -27,3 +27,4 @@ logs
 *.sqlite
 *.sqlite3
 data.sqlite
+.vercel

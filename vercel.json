@@ -1,14 +1,10 @@
 {
-  "framework": "nuxt",
-  "buildCommand": "yarn build",
-  "devCommand": "yarn dev",
-  "installCommand": "yarn install",
-  "functions": {
-    "server/api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "env": {
-    "NODE_ENV": "production"
-  }
-} 
+  "version": 2,
+  "framework": "nuxtjs",
+  "buildCommand": "npx nuxi build",
+  "devCommand": "npx nuxi dev",
+  "outputDirectory": ".output",
+  "routes": [
+    { "src": "/(.*)", "dest": ".output/server/index.mjs" }
+  ]
+}
