@@ -1,21 +1,22 @@
-# Nuxt dev/build outputs
-.data
+# Nuxt build outputs
+.output
 .nitro
 .cache
+.data
 
 # Node dependencies
-node_modules
+node_modules/
 
 # Logs
-logs
+logs/
 *.log
 
-# Misc
+# OS & IDE
 .DS_Store
 .fleet
 .idea
 
-# Local env files
+# Env files
 .env
 .env.*
 !.env.example
@@ -24,4 +25,9 @@ logs
 *.sqlite
 *.sqlite3
 data.sqlite
-.vercel
+
+# Vercel config
+.vercel/
+
+# TypeScript build info
+*.tsbuildinfo
