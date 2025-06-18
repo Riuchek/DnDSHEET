@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/css/main.css'],
-  
+
   nitro: {
     preset: 'vercel',
     prerender: {
@@ -11,12 +11,7 @@ export default defineNuxtConfig({
       failOnError: false
     }
   },
-  
-  app: {
-    buildAssetsDir: '/_nuxt/',
-    baseURL: '/'
-  },
-  
+
   experimental: {
     payloadExtraction: true
   }
