@@ -1,10 +1,28 @@
 {
-  "version": 2,
-  "framework": "nuxtjs",
-  "buildCommand": "npx nuxi build",
-  "devCommand": "npx nuxi dev",
-  "outputDirectory": ".output",
+  "version": 3,
+  "builds": [
+    {
+      "src": "nuxt.config.ts",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": ".output/public"
+      }
+    }
+  ],
   "routes": [
-    { "src": "/(.*)", "dest": ".output/server/index.mjs" }
+    {
+      "src": "/_nuxt/(.*)",
+      "dest": "/_nuxt/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    }
   ]
 }
