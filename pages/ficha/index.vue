@@ -86,16 +86,16 @@ const handleSaveCharacter = async (characterData: any) => {
       body: characterData
     })
 
-    alert('Character saved successfully!')
+    alert('Personagem salvo com sucesso!')
     selectedClass.value = null
   } catch (error) {
     console.error('Error saving character:', error)
-    alert('Failed to save character. Please try again.')
+    alert('Falha ao salvar personagem. Por favor, tente novamente.')
   }
 }
 
 const viewCharacterSheets = () => {
-  navigateTo('/characters')
+  navigateTo('/fichas')
 }
 
 const getClassColor = (className: string) => {

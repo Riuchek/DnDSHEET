@@ -1,38 +1,38 @@
 <template>
-    <div class="min-h-screen flex items-center justify-center bg-gray-900">
-      <div class="bg-gray-800 p-8 rounded-lg shadow-xl w-96 border-2 border-red-600">
-        <h1 class="text-3xl font-bold mb-6 text-center text-red-500 font-fantasy">Login do aventureiro</h1>
+    <div class="min-h-screen flex items-center justify-center bg-gray-50">
+      <div class="bg-white p-8 rounded-lg shadow-xl w-96 border border-gray-200">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-900 font-fantasy">Login do Aventureiro</h1>
         
         <form @submit.prevent="handleLogin" class="space-y-4">
           <div>
-            <label for="username" class="block text-sm font-medium text-red-400">Nome do personagem</label>
+            <label for="username" class="block text-sm font-medium text-gray-700">Nome do personagem</label>
             <input
               id="username"
               v-model="username"
               type="text"
               required
-              class="mt-1 block w-full rounded-md bg-gray-700 border-red-600 text-white shadow-sm focus:border-red-500 focus:ring-red-500"
+              class="mt-1 block w-full rounded-md bg-white border-gray-300 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
   
           <div>
-            <label for="password" class="block text-sm font-medium text-red-400">Runa secreta</label>
+            <label for="password" class="block text-sm font-medium text-gray-700">Runa secreta</label>
             <input
               id="password"
               v-model="password"
               type="password"
               required
-              class="mt-1 block w-full rounded-md bg-gray-700 border-red-600 text-white shadow-sm focus:border-red-500 focus:ring-red-500"
+              class="mt-1 block w-full rounded-md bg-white border-gray-300 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
   
-          <div v-if="error" class="text-red-400 text-sm">
+          <div v-if="error" class="text-red-600 text-sm">
             {{ error }}
           </div>
   
           <button
             type="submit"
-            class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 font-bold transition-colors duration-200"
+            class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 font-bold transition-colors duration-200"
             :disabled="loading"
           >
             {{ loading ? 'Castando a magia...' : 'Entrar no Reino' }}

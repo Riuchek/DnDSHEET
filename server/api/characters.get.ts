@@ -35,7 +35,6 @@ export default defineEventHandler(async (event) => {
     
     const characters = stmt.all() as CharacterSheet[]
     
-    // Parse JSON fields back to objects
     const parsedCharacters = characters.map(char => ({
       ...char,
       proficiencies: JSON.parse(char.proficiencies || '[]'),
