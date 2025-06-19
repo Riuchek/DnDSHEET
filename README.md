@@ -117,12 +117,6 @@ dndsheet/
 
 ---
 
-## 🎵 Playlist de Aventura
-
-Enquanto desenvolve ou joga, ouça nossa playlist especial **[Uma Verdade](https://open.spotify.com)** no Spotify para mergulhar no clima épico das suas partidas! 🎶
-
----
-
 ## 🤝 Contribuindo
 
 Este projeto foi criado com 💖 para a comunidade de RPG. Contribuições são sempre bem-vindas!
@@ -143,12 +137,6 @@ Se encontrar algum bug ou tiver sugestões:
 2. Crie uma nova issue com detalhes claros
 3. Inclua passos para reproduzir o problema
 4. Adicione screenshots se relevante
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
