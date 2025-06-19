@@ -3,6 +3,8 @@
 .nitro
 .cache
 .data
+.nuxt 
+
 
 # Node dependencies
 node_modules/
