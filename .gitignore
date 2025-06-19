@@ -26,8 +26,5 @@ logs/
 *.sqlite3
 data.sqlite
 
-# Vercel config
-.vercel/
-
 # TypeScript build info
 *.tsbuildinfo

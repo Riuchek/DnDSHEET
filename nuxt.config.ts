@@ -4,15 +4,5 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/css/main.css'],
 
-  nitro: {
-    preset: 'vercel',
-    prerender: {
-      crawlLinks: true,
-      failOnError: false
-    }
-  },
-
-  experimental: {
-    payloadExtraction: true
-  }
+  
 })
